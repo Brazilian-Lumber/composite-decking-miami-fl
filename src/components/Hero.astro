@@ -1,4 +1,6 @@
 ---
+import SiteButton from './SiteButton.astro';
+
 const cards = [
   {
     image: '/assets/icons/material-symbols-light_inventory-rounded.png',
@@ -40,31 +42,29 @@ const cards = [
       <div class="w-full text-left md:w-[60%]">
         <!-- Headline -->
         <h1
-          class="mt-10 mb-6 text-center text-2xl font-medium text-white uppercase sm:text-4xl md:text-left md:text-5xl md:!leading-[40px] lg:mt-0 lg:text-6xl lg:!leading-[70px]"
+          class="mt-10 mb-6 text-center text-3xl font-medium text-white uppercase md:text-left md:text-5xl md:!leading-[40px] lg:mt-0 lg:text-6xl lg:!leading-[70px]"
         >
           Miami's<br /> Largest Selection of Composite Decking
         </h1>
 
-        <!-- 2 Buttons Below Title -->
-        <div
-          class="flex flex-col items-stretch justify-center gap-4 pt-2 sm:items-center md:flex-row md:justify-start"
+        <p
+          class="text-md mb-5 block text-center leading-relaxed font-light text-white md:hidden"
         >
-          <a
-            href="#contact"
-            class="btn-primary sm:px-auto w-full !px-8 md:w-fit"
-            >Get a Free Estimate</a
-          >
-          <a
-            href="tel:+18775350896"
-            class="btn-primary sm:px-auto w-fit w-full !px-8 md:w-fit"
-            >Call Now</a
-          >
+          Premium composite decking, docks, cladding, wall panels, and outdoor
+          solutions from the industry's leading brands.
+        </p>
+
+        <div
+          class="mx-auto flex w-[80%] flex-col items-stretch justify-center gap-4 pt-2 sm:items-center md:mx-0 md:w-auto md:flex-row md:justify-start"
+        >
+          <SiteButton text="Get a Free Estimate" link="#contact" />
+          <SiteButton text="Call Now" link="tel:+18775350896" />
         </div>
       </div>
 
       <!-- Right Column: Text Arriba a la Derecha -->
       <div
-        class="static top-[-80px] right-0 flex w-full flex-row-reverse items-start gap-2 sm:w-95 sm:gap-4 md:absolute md:flex-row"
+        class="static top-[-80px] right-0 hidden w-full flex-row-reverse items-start gap-2 sm:w-95 sm:gap-4 md:absolute md:flex md:flex-row"
       >
         <p
           class="text-md m-0 text-left leading-relaxed font-light text-white md:text-lg lg:text-right"
@@ -81,15 +81,61 @@ const cards = [
       </div>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-6 pt-4">
-      {
-        cards.map((card) => (
-          <div class="group sm:text-md relative flex w-full items-center gap-4 overflow-hidden rounded-2xl border border-white bg-white/20 p-4 text-sm backdrop-blur-[2px] transition-all duration-300 hover:-translate-y-1 sm:w-[46%] sm:p-6 md:w-[28%] xl:w-[18%]">
-            <img src={card.image} alt={card.alt} class="h-6 sm:h-8" />
-            <h3 class="font-normal text-white">{card.title}</h3>
-          </div>
-        ))
-      }
+    <!-- Slider Container -->
+    <div class="relative w-full">
+      <!-- Cards Wrapper -->
+      <div
+        id="hero-cards-slider"
+        class="flex snap-x snap-mandatory [scrollbar-width:none] gap-4 overflow-x-auto pt-4 pb-4 [-ms-overflow-style:none] md:flex-wrap md:justify-center md:overflow-visible md:pb-0 [&::-webkit-scrollbar]:hidden"
+      >
+        {
+          cards.map((card) => (
+            <div class="group relative flex w-[calc(50%-8px)] flex-shrink-0 snap-start flex-col items-center justify-center gap-2 overflow-hidden rounded-2xl border border-white bg-white/20 p-4 text-center text-xs backdrop-blur-[1px] transition-all duration-300 hover:-translate-y-1 sm:w-[46%] sm:flex-row sm:p-6 sm:text-left sm:text-sm md:w-[28%] md:flex-auto md:snap-none xl:w-[18%]">
+              <img src={card.image} alt={card.alt} class="h-8 sm:h-8" />
+              <h3 class="font-normal text-white">{card.title}</h3>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Progress Bar (Mobile only) -->
+      <div
+        class="relative mx-auto mt-2 h-0.5 w-[60%] overflow-hidden rounded-full bg-white/30 md:hidden"
+      >
+        <div
+          id="hero-cards-progress"
+          class="absolute top-0 left-0 h-full w-[40%] rounded-full bg-white transition-all duration-150 ease-out"
+        >
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  function initHeroSlider() {
+    const slider = document.getElementById('hero-cards-slider');
+    const progress = document.getElementById('hero-cards-progress');
+
+    if (slider && progress) {
+      const updateProgress = () => {
+        const scrollLeft = slider.scrollLeft;
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+        if (maxScroll > 0) {
+          const scrollPercentage = scrollLeft / maxScroll;
+          // Progress bar is 40% width, so it can move up to 60% (100 - 40)
+          const maxLeft = 60;
+          progress.style.left = `${scrollPercentage * maxLeft}%`;
+        }
+      };
+
+      slider.addEventListener('scroll', updateProgress, { passive: true });
+      window.addEventListener('resize', updateProgress);
+      updateProgress();
+    }
+  }
+
+  document.addEventListener('astro:page-load', initHeroSlider);
+  document.addEventListener('DOMContentLoaded', initHeroSlider);
+</script>

@@ -1,26 +1,36 @@
+---
+import SiteButton from './SiteButton.astro';
+---
+
 <section
-  class="relative z-2 rounded-b-2xl bg-[url('/assets/start-your-project-banner.webp')] bg-cover bg-center px-5 py-10 sm:rounded-b-4xl sm:py-16 lg:p-5"
+  class="relative z-2 overflow-hidden rounded-b-2xl bg-[url('/assets/start-your-project-banner.webp')] bg-cover bg-center px-5 pt-45 pb-15 sm:rounded-b-4xl sm:py-16 lg:p-5"
 >
+  <div class="absolute inset-0 z-0 bg-black/35"></div>
   <div
-    class="mx-auto flex h-auto max-w-300 items-center justify-start lg:h-112.5"
+    class="relative z-10 mx-auto flex h-auto max-w-300 items-center justify-start lg:h-112.5"
   >
-    <div class="w-full pl-10 text-white sm:w-107.5 sm:px-12">
-      <div class="relative">
+    <div class="w-full text-white sm:w-130 sm:px-12">
+      <div class="flex items-start gap-2 sm:gap-6">
         <div
-          class="absolute top-2 left-[-40px] flex h-7 w-7 items-center justify-center rounded-full bg-white/30"
+          class="flex min-h-5 min-w-5 items-center justify-center rounded-full bg-white/20 sm:min-h-7 sm:min-w-7"
         >
-          <div class="h-3 w-3 rounded-full bg-white"></div>
+          <span
+            class="min-h-2 min-w-2 rounded-full bg-white sm:min-h-3 sm:min-w-3"
+          ></span>
         </div>
-        <h2 class="text-xl uppercase sm:text-2xl lg:text-4xl">
+        <h2 class="text-xl leading-tight text-white uppercase lg:text-4xl">
           Ready to Start Your Project?
         </h2>
       </div>
-      <p class="my-5 lg:my-8">
+
+      <p class="my-5 pl-7 sm:pl-13 lg:my-8">
         Get expert recommendations, product availability, and competitive
         pricing from South Florida's composite decking specialists.
       </p>
-      <a href="#contact" class="btn-primary inline-block">Get a Free Estimate</a
-      >
+
+      <div class="w-[90%] pl-7 sm:w-fit sm:pl-13">
+        <SiteButton text="Get a Free Estimate" link="#contact" />
+      </div>
     </div>
   </div>
 </section>

@@ -21,14 +21,31 @@ const items = [
 ];
 ---
 
-<section id="services-grid" class="bg-[#2D0863] px-5 py-8 lg:py-28">
+<section id="services-grid" class="bg-[#2D0863] px-5 py-16 lg:py-28">
   <div class="services-grid-container">
     <!-- Left: Title & Description -->
     <div class="services-grid-left">
-      <h2 class="text-xl text-[#FE7F03] uppercase sm:text-2xl lg:text-4xl">
+      <!-- 
+      <h2 class="text-2xl text-[#FE7F03] uppercase lg:text-4xl">
         More Than a Supplier
       </h2>
-      <p class="text-md max-w-105 font-light text-white md:text-lg">
+      -->
+
+      <div class="flex items-start gap-2 sm:items-center sm:gap-6">
+        <div
+          class="flex min-h-5 min-w-5 items-center justify-center rounded-full bg-[#fff]/20 sm:min-h-7 sm:min-w-7"
+        >
+          <span
+            class="min-h-2 min-w-2 rounded-full bg-[#fff] sm:min-h-3 sm:min-w-3"
+          ></span>
+        </div>
+        <h2
+          class="text-xl leading-tight text-[#FE7F03] uppercase sm:w-auto lg:text-4xl"
+        >
+          More Than a Supplier
+        </h2>
+      </div>
+      <p class="text-md ml-7 font-light text-white sm:ml-14 md:text-lg">
         At Composite Decking Miami FL, our goal is to provide customers with the
         best shopping experience through premium products, exceptional pricing,
         and superior service.
@@ -36,7 +53,7 @@ const items = [
     </div>
 
     <!-- Right: 6 Items Grid -->
-    <div class="services-grid-right mx-auto max-w-62.5 sm:max-w-full">
+    <div class="services-grid-right mx-auto max-w-87.5 sm:max-w-full">
       {
         items.map((item) => (
           <div class="flex items-center gap-4 transition-all duration-300 ease-in-out hover:-translate-y-2">
@@ -56,12 +73,13 @@ const items = [
 
 <style>
   .services-grid-container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
+    grid-template-columns: 450px 600px;
+    gap: 60px;
     align-items: center;
+    justify-content: space-between;
   }
   /* ── Left ── */
   .services-grid-left {
@@ -73,25 +91,27 @@ const items = [
   .services-grid-right {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    column-gap: 70px;
+    row-gap: 40px;
   }
 
   /* ── Responsive ── */
-  @media (max-width: 1024px) {
+  @media (max-width: 1100px) {
     .services-grid-container {
       grid-template-columns: 1fr;
-      gap: 48px;
+      gap: 35px;
     }
     .services-grid-left {
       position: static;
-      align-items: center;
-      text-align: center;
+      align-items: start;
+      text-align: start;
     }
   }
 
   @media (max-width: 640px) {
     .services-grid-right {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 40px;
     }
   }
 </style>

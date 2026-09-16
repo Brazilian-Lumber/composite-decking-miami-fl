@@ -188,7 +188,7 @@ const navigationMenu = [
         <ul class="space-y-4 text-sm">
           {
             hoursMenu.map((item) => (
-              <li class="flex justify-center gap-5 last:opacity-70">
+              <li class="flex gap-5 last:opacity-70">
                 <p>{item.day}</p>
                 <p>{item.hour}</p>
               </li>
@@ -235,7 +235,7 @@ const navigationMenu = [
         <ul class="space-y-4 text-sm">
           {
             navigationMenu.map((item) => (
-              <li class="text-center">
+              <li>
                 <a href={item.link} class="text-white">
                   {item.label}
                 </a>
@@ -247,7 +247,9 @@ const navigationMenu = [
     </div>
 
     <!-- Bottom Bar -->
-    <div class="text-sm text-white">
+    <div
+      class="mx-auto w-[70%] text-xs text-white sm:mx-0 sm:w-auto sm:text-sm"
+    >
       <p class="text-center sm:text-left">
         © Compositive Decking Miami {new Date().getFullYear()}, All rights
         reserverd

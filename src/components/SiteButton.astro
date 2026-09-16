@@ -1,0 +1,21 @@
+---
+const { text, link } = Astro.props;
+---
+
+<a href={link} class="btn-primary">
+  {text}
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="10"
+    height="10"
+    viewBox="0 0 10 10"
+    fill="none"
+    class="h-2.5 w-2.5"
+  >
+    <path
+      d="M8.74955 8.74958L8.74955 0.499999L0.499967 0.499999M8.74955 0.499999L0.499967 8.74958"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"></path>
+  </svg>
+</a>

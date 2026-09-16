@@ -1,9 +1,29 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "Host Grotesk", system-ui, sans-serif;
+}
+
+@font-face {
+  font-family: 'Host Grotesk';
+  src: url('/fonts/HostGrotesk/HostGrotesk-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Host Grotesk';
+  src: url('/fonts/HostGrotesk/HostGrotesk-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+    font-family: 'Host Grotesk', system-ui, sans-serif;
   }
 
   body {
@@ -12,5 +32,5 @@
 }
 
 .btn-primary {
-  @apply px-10 py-4 rounded-full text-white font-light bg-white/20 transition-all hover:scale-105 active:scale-95 text-center border border-white
+  @apply md:w-fit w-full flex items-center justify-center gap-4 px-8 py-4 rounded-full backdrop-blur-[1px] text-white font-light bg-white/20 transition-all hover:scale-105 active:scale-95 text-center border border-white
 }

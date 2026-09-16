@@ -51,29 +51,42 @@ const tabs = [
 ];
 ---
 
-<section
-  id="trusted-brands"
-  class="overflow-hidden bg-[#f8f5f0] px-5 py-8 lg:py-16"
->
-  <div class="mx-auto max-w-350">
+<section id="trusted-brands" class="overflow-hidden px-5 py-8">
+  <div class="mx-auto max-w-350 rounded-3xl bg-[#f8f5f0] px-5 py-16">
     <!-- Section Header -->
-    <div class="px- mx-auto mb-10 max-w-180 text-center sm:mb-14">
-      <h2 class="mb-4 text-xl text-[#2d0863] uppercase sm:text-2xl lg:text-4xl">
-        The industry's most trusted makers.
-      </h2>
-      <p class="font-light text-[#555]">
+    <div class="mx-auto mb-10 items-center justify-center sm:mb-14">
+      <div
+        class="mb-6 flex items-start justify-center gap-2 sm:gap-6 md:items-center"
+      >
+        <div
+          class="flex min-h-5 min-w-5 items-center justify-center rounded-full bg-[#FE7F03]/20 sm:min-h-7 sm:min-w-7"
+        >
+          <span
+            class="min-h-2 min-w-2 rounded-full bg-[#FE7F03] sm:min-h-3 sm:min-w-3"
+          ></span>
+        </div>
+        <h2
+          class="text-xl leading-tight text-[#2d0863] uppercase sm:w-auto lg:text-4xl"
+        >
+          The industry's most trusted makers.
+        </h2>
+      </div>
+
+      <p
+        class="ml-7 w-fit text-left font-light text-[#555] sm:w-[80%] md:m-auto md:w-[40%] md:text-center"
+      >
         We stock the industry's most trusted composite decking manufacturers,
         each offering unique styles, colors, performance levels, and warranties.
       </p>
     </div>
 
-    <p class="mb-8 block text-center text-[#2d0863] md:hidden">
-      ← Drag to view all →
-    </p>
-
     <!-- Tab Navigation -->
-    <div class="tabs-nav-wrapper mx-auto mb-12 w-full overflow-x-auto sm:px-5">
-      <div class="tabs-nav" role="tablist" aria-label="Services tabs">
+    <div class="tabs-nav-wrapper mx-auto mb-8 w-full sm:mb-12 sm:px-5">
+      <div
+        class="tabs-nav flex flex-wrap"
+        role="tablist"
+        aria-label="Services tabs"
+      >
         {
           tabs.map((tab, i) => (
             <button
@@ -196,9 +209,6 @@ const tabs = [
 </script>
 
 <style>
-  .tabs-nav-wrapper {
-    scrollbar-width: none;
-  }
   .tabs-nav-wrapper::-webkit-scrollbar {
     display: none;
   }
@@ -227,15 +237,12 @@ const tabs = [
     transition: color 0.3s ease;
     font-family: inherit;
     letter-spacing: 0.02em;
+    opacity: 0.4;
   }
 
-  .tab-btn:hover {
-    color: #2d0863;
-  }
-
+  .tab-btn:hover,
   .tab-btn.active {
-    color: #2d0863;
-    font-weight: 600;
+    opacity: 1;
   }
 
   /* Sliding underline indicator */
@@ -257,7 +264,6 @@ const tabs = [
     margin: 0 auto;
     padding: 0 20px;
     position: relative;
-    min-height: 480px;
   }
 
   .tab-panel {
@@ -402,6 +408,10 @@ const tabs = [
     .tab-content {
       grid-template-columns: 1fr;
       gap: 20px;
+    }
+
+    .tab-indicator {
+      display: none;
     }
 
     /* On mobile, image goes first */

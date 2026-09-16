@@ -1,4 +1,6 @@
 ---
+import ProcessStepsSlider from './ProcessStepsSlider.astro';
+
 const steps = [
   {
     image: '/assets/icons/user-comment.png',
@@ -23,36 +25,43 @@ const steps = [
 ];
 ---
 
-<section id="project-types" class="process-section px-5 py-8 md:py-16">
-  <div class="mx-auto flex w-full max-w-3xl flex-col gap-10 sm:gap-16">
+<section id="project-types" class="process-section px-5 pt-8 pb-12 md:py-16">
+  <div class="mx-auto flex w-full max-w-350 flex-col gap-10">
     <div
-      class="process-title-wrapper flex items-start justify-center gap-3 sm:items-center"
+      class="flex items-start gap-2 sm:items-center sm:justify-center sm:gap-6"
     >
-      <div class="process-dot-ring">
-        <span class="process-dot-inner"></span>
+      <div
+        class="flex min-h-5 min-w-5 items-center justify-center rounded-full bg-[#D65311]/20 sm:min-h-7 sm:min-w-7"
+      >
+        <span
+          class="min-h-2 min-w-2 rounded-full bg-[#D65311] sm:min-h-3 sm:min-w-3"
+        ></span>
       </div>
       <h2
-        class="process-title text-xl text-[#d65311] uppercase sm:text-2xl lg:text-4xl"
+        class="w-[75%] text-xl leading-tight text-[#D65311] uppercase sm:w-auto lg:text-4xl"
       >
         Designed for Every Outdoor Space
       </h2>
     </div>
 
-    <!-- Overlapping circles row -->
-    <div class="circles-row flex flex-wrap justify-center xl:flex-nowrap">
+    <!-- Mobile Layout (Slider) -->
+    <ProcessStepsSlider steps={steps} />
+
+    <!-- Desktop Layout (Hidden on Mobile) -->
+    <div class="hidden w-full flex-wrap justify-center lg:flex">
       {
         steps.map((step) => (
-          <div class="circle-item mx-[-10px] my-[-10px] flex h-[180px] w-[180px] flex-col items-center justify-center gap-3 rounded-full border border-dashed border-[#FF5623] p-5 transition-all duration-300 hover:scale-110 sm:my-[-25px] sm:min-h-[250px] sm:min-w-[250px] sm:p-12 xl:my-auto">
+          <div class="circle-item mx-[-10px] flex max-h-[250px] min-h-[250px] max-w-[250px] min-w-[250px] flex-col items-center justify-center gap-4 rounded-full border border-dashed border-[#FF5623] p-6 transition-all duration-300 hover:scale-105">
             <div class="circle-card">
               <img
                 src={step.image}
                 alt={step.label}
-                class="circle-img h-12 object-contain sm:h-16"
+                class="circle-img h-14 object-contain xl:h-16"
                 loading="lazy"
                 decoding="async"
               />
             </div>
-            <span class="circle-label lg:text-md text-center text-sm">
+            <span class="circle-label w-[75%] text-center text-sm xl:text-base">
               {step.label}
             </span>
           </div>
